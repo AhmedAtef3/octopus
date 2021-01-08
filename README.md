@@ -20,11 +20,12 @@ The main directory that holds all databases is called octopusdb, located in your
 - data : Contains tables data files , where records of each table is stored.
 - metadata : Contains tables metadata , where columns, datatypes and constrains are stored.
 
+![Image1](https://github.com/AyaHamedd/OctopusDB/blob/main/dbArchitectue.png)
 
 # Software Architecture
 The main script that receives inputs from user is octopus. Each command has its own script. Octopus starts calling the corresponding script based on user’s requirements.
 
-
+![Image2](https://github.com/AyaHamedd/OctopusDB/blob/main/swArchitecture.png)
 
 ## Platforms
 Linux x86_64
