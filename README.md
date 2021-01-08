@@ -1,3 +1,5 @@
+![alt text](https://github.com/AyaHamedd/OctopusDB/octopusdb.jpeg?raw=true)
+
 # OctopusDB
 OctopusDB ia a simple database engine written from scratch in bash shell commands.
 
