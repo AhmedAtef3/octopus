@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# @file selectRecord.sh
+# @file insertRecord.sh
 # @brief A script that add records into table as a full record.
 # @arg $1 Table Name.
 # @arg $n columns values.
