@@ -1,4 +1,4 @@
-![Test Image 4](https://github.com/AyaHamedd/OctopusDB/octopusdb.jpeg)
+![Image](https://github.com/AyaHamedd/OctopusDB/blob/main/octopusdb.jpeg)
 # OctopusDB
 OctopusDB ia a simple database engine written from scratch in bash shell commands.
 
