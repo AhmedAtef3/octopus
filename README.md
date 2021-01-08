@@ -7,13 +7,14 @@ OctopusDB ia a simple database engine written from scratch in bash shell command
 # Installation
 Clone the repository in your home directory.
 
-cd
-git clone git clone https://github.com/AyaHamedd/OctopusDB.git
-chmod +x 557 $HOME/octopus
-sudo cp $HOME/octopus/octopus /usr/bin
+`$cd`
+`$git clone https://github.com/AyaHamedd/octopus.git`
+`$chmod +x 755 $HOME/octopus/*.sh`
+`sudo cp $HOME/octopus/octopus /usr/bin`
 
-To start using the database type
-bash octopus.sh
+To start using the database:
+`$bash octopus.sh`
+
 
 # Database Architecture
 The main directory that holds all databases is called octopusdb, located in your home directory. Each database has a directory under  octopusdb with its name. Then each database has two directories;
