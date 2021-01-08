@@ -8,11 +8,16 @@ OctopusDB ia a simple database engine written from scratch in bash shell command
 Clone the repository in your home directory.
 
 `$cd`
+
 `$git clone https://github.com/AyaHamedd/octopus.git`
+
 `$chmod +x 755 $HOME/octopus/*.sh`
+
 `sudo cp $HOME/octopus/octopus /usr/bin`
 
+
 To start using the database:
+
 `$bash octopus.sh`
 
 
