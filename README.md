@@ -43,6 +43,10 @@ The main script that receives inputs from user is octopus. Each command has its 
 - Validates databases and tables names as they can't contain any characters or spaces and can't contain only numbers. 
 - Reading, Deleting and Updating records by applying multiple conditions.
 
+# Tutorial
+You can find a tutorial on using the engine in the following file : 
+[Intro.pdf](https://github.com/AyaHamedd/octopus/blob/main/OctopusDBTutorial.pdf).
+
 ## Platforms
 Linux x86_64
 
