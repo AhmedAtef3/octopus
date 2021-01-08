@@ -9,9 +9,13 @@ Clone the repository in your home directory.
 
 cd
 git clone https://
+
 mv $HOME/OctopusDB/octopus $HOME/octopus
+
 rm -r $HOME/OctopusDB
+
 chmod +x 557 $HOME/octopus
+
 sudo cp $HOME/octopus/octopus /usr/bin
 
 To start using the database type
