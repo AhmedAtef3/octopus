@@ -8,18 +8,12 @@ OctopusDB ia a simple database engine written from scratch in bash shell command
 Clone the repository in your home directory.
 
 cd
-git clone https://
-
-mv $HOME/OctopusDB/octopus $HOME/octopus
-
-rm -r $HOME/OctopusDB
-
+git clone git clone https://github.com/AyaHamedd/OctopusDB.git ./octopus
 chmod +x 557 $HOME/octopus
-
 sudo cp $HOME/octopus/octopus /usr/bin
 
 To start using the database type
-bash octopus.sh
+octopus
 
 # Database Architecture
 The main directory that holds all databases is called octopusdb, located in your home directory. Each database has a directory under  octopusdb with its name. Then each database has two directories;
@@ -33,6 +27,9 @@ The main script that receives inputs from user is octopus. Each command has its 
 
 ![Image2](https://github.com/AyaHamedd/OctopusDB/blob/main/swArchitecture.png)
 
+# Supported Datatypes
+- INT : -2147483648 to 2147483647.
+- TEXT : Any kind of text data.
 ## Platforms
 Linux x86_64
 
