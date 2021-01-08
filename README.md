@@ -20,7 +20,6 @@ To start using the database:
 
 `$bash octopus.sh`
 
-
 # Database Architecture
 The main directory that holds all databases is called octopusdb, located in your home directory. Each database has a directory under  octopusdb with its name. Then each database has two directories;
 - data : Contains tables data files , where records of each table is stored.
