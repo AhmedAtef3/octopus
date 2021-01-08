@@ -29,8 +29,11 @@ The main script that receives inputs from user is octopus. Each command has its 
 
 # Features
 - Supports Int and text datatypes
-    INT : -2147483648 to 2147483647.
+
+    INT : -2147483648 to 2147483647
+.
     TEXT : Any kind of text data.
+
 - Supports primary key constraints.
 - Validates databases and tables names as they can't contain any characters or spaces and can't contain only numbers. 
 - Reading, Deleting and Updating records by applying multiple conditions.
