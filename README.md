@@ -34,7 +34,7 @@ The main script that receives inputs from user is octopus. Each command has its 
 .
     TEXT : Any kind of text data.
 
-- Supports primary key constraints.
+- Supports primary key constrain.
 - Validates databases and tables names as they can't contain any characters or spaces and can't contain only numbers. 
 - Reading, Deleting and Updating records by applying multiple conditions.
 
