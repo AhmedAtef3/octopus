@@ -18,7 +18,7 @@ Clone the repository in your home directory.
 `$sudo cp $HOME/octopus/octopus.sh /usr/bin`
 
 
-To start using the database:
+To start using the database engine:
 
 `$bash octopus.sh`
 
