@@ -20,6 +20,17 @@ To start using the database:
 
 `$bash octopus.sh`
 
+# Features
+- Supports Int and text datatypes
+
+    INT : -2147483648 to 2147483647
+.
+    TEXT : Any kind of text data.
+
+- Supports primary key constrain.
+- Validates databases and tables names as they can't contain any characters or spaces and can't contain only numbers. 
+- Reading, Deleting and Updating records by applying multiple conditions.
+
 # Database Architecture
 The main directory that holds all databases is called octopusdb, located in your home directory. Each database has a directory under  octopusdb with its name. Then each database has two directories;
 - data : Contains tables data files , where records of each table is stored.
@@ -32,20 +43,15 @@ The main script that receives inputs from user is octopus. Each command has its 
 
 ![Image2](https://github.com/AyaHamedd/OctopusDB/blob/main/images/swArchitecture.png)
 
-# Features
-- Supports Int and text datatypes
+# API Documentation
 
-    INT : -2147483648 to 2147483647
-.
-    TEXT : Any kind of text data.
-
-- Supports primary key constrain.
-- Validates databases and tables names as they can't contain any characters or spaces and can't contain only numbers. 
-- Reading, Deleting and Updating records by applying multiple conditions.
+Refer to the following file : 
+[API_Documentation.pdf](https://github.com/AyaHamedd/octopus/blob/main/OctopuDB%20-%20API%20Documentation.pdf).
 
 # Tutorial
+
 You can find a tutorial on using the engine in the following file : 
-[Intro.pdf](https://github.com/AyaHamedd/octopus/blob/main/OctopusDBTutorial.pdf).
+[Tutorial.pdf](https://github.com/AyaHamedd/octopus/blob/main/OctopusDBTutorial.pdf).
 
 ## Platforms
 Linux x86_64
