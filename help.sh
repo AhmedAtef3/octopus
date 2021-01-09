@@ -50,6 +50,7 @@ else
 	echo "|Arguments: "
 	echo "| -TableName: Should be an existing table."
 	echo "| -Conditions: The conditions of the records represented in the following syntax separated by commas : COL1=VAL1,COL2=VAL2."
+	echo "|              If no conditions are provided, it will delete all records."	
 	echo "|"
 	echo "+${bold}UpdateRecord${normal}-Updates a value of a record at a certain column."
 	echo "|Arguments: "

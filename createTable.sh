@@ -74,7 +74,7 @@ then
 #If a primary key is assigned to a text.
 elif ! textPKCheck "${COLUMNS}"
 then
-  echo "ERROR: BLOB/TEXT column used in key specification without a key length."
+  echo "ERROR: Primary key constrain is assigned on a TEXT column."
   
 else
   echo "ERROR: You have an error in your syntax, check the manual for the right syntax."
