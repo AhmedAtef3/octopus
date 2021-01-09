@@ -85,7 +85,35 @@ function TableMenu {
 	      		read tableName
       			echo -n "${bold}Conditions : ${normal}"
 	      		read record
-	      		bash $HOME/octopus/deleteRecord.sh ${tableName} ${record}
+	      		#---------------------------------------------------------------
+	      		#To get number of records
+      			INDEX=0
+      			RECORDS_NUM=1
+      			while [ ${INDEX} -lt "${#record[@]}" ]
+      			do
+      			  if [[ ${record[$INDEX]} =~ "," ]]
+      			  then
+      			    let RECORDS_NUM=${RECORDS_NUM}+1
+      			  fi
+      			  let INDEX=${INDEX}+1 
+      			done
+      			#To check strings contain space within the string returned from read command and add commas
+      			INDEX=0
+      			#set -x
+			while [ ${INDEX} -lt "${RECORDS_NUM}" ]
+			do
+ 			  if [[ ${INDEX} -eq $[${RECORDS_NUM}-1] ]]
+ 			  then
+ 			    RECORDS+=("$(echo "${record[@]}" | cut -d "," -f $[${INDEX}+1] | sed 's/^ *//g')")
+ 			  else
+ 			    RECORDS+=("$(echo "${record[@]}" | cut -d "," -f $[${INDEX}+1] | sed 's/^ *//g' | sed 's/$/,/g')")
+ 			  fi
+ 			  let INDEX=${INDEX}+1
+			done
+			#-----------------------------------------------------------------
+	      		bash $HOME/octopus/deleteRecord.sh ${tableName} "${RECORDS[@]}"
+	      		unset RECORDS
+	      		unset record  
 	      		echo "Press any key to continue .."
 	      		read -n1
 	      		clear
@@ -98,7 +126,7 @@ function TableMenu {
 	      		read record
 	      		echo -n "${bold}Updated value : ${normal}"
 	      		read updated
-	      		bash $HOME/octopus/updateRecord.sh ${tableName} ${record} ${updated}
+	      		bash $HOME/octopus/updateRecord.sh ${tableName} ${record} ",${updated}"
 	      		echo "Press any key to continue .."
 	      		read -n1
 	      		clear
@@ -108,12 +136,41 @@ function TableMenu {
       			echo -n "${bold}Table name : ${normal}"
 	      		read tableName
       			echo -n "${bold}Conditions : ${normal}"
-	      		read record
-	      		bash $HOME/octopus/selectRecord.sh ${tableName} ${record}
+	      		read -a record
+	      		#-----------------------------------------------------------
+      			#To get number of records
+      			INDEX=0
+      			RECORDS_NUM=1
+      			while [ ${INDEX} -lt "${#record[@]}" ]
+      			do
+      			  if [[ ${record[$INDEX]} =~ "," ]]
+      			  then
+      			    let RECORDS_NUM=${RECORDS_NUM}+1
+      			  fi
+      			  let INDEX=${INDEX}+1 
+      			done
+      			#To check strings contain space within the string returned from read command and add commas
+      			INDEX=0
+      			#set -x
+			while [ ${INDEX} -lt "${RECORDS_NUM}" ]
+			do
+ 			  if [[ ${INDEX} -eq $[${RECORDS_NUM}-1] ]]
+ 			  then
+ 			    RECORDS+=("$(echo "${record[@]}" | cut -d "," -f $[${INDEX}+1] | sed 's/^ *//g')")
+ 			  else
+ 			    RECORDS+=("$(echo "${record[@]}" | cut -d "," -f $[${INDEX}+1] | sed 's/^ *//g' | sed 's/$/,/g')")
+ 			  fi
+ 			  let INDEX=${INDEX}+1
+			done
+      			#---------------------------------------------------------	      			     		
+	      		bash $HOME/octopus/selectRecord.sh ${tableName} "${RECORDS[@]}"
+	      		unset RECORDS
+	      		unset record  
 	      		echo "Press any key to continue .."
 	      		read -n1
 	      		clear
 	      		;;
+
 	      		
 	    		8) #showTable
       			echo -n "${bold}Table name : ${normal}"

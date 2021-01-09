@@ -43,28 +43,32 @@ then
 fi
 # ------------------------------------------------------------------------------------------------------
 #Put input arguments into an array
-ARGS=(${@})
-
-#Extract conditions from arguments
+ARGS=("${@}")
+#set -x
+# Extract conditions from arguments
 CONDITIONS=($(echo "${ARGS[@]:1}"))
 
-#Get number of Conditions
+# Get number of Conditions
 CONDITIONS_NUM=$(echo $[${#}-1])
 
-#Put the columns of the conditions into an array
-COLS=($(echo "${CONDITIONS[@]%=*}"))
+# Put the columns of the conditions into an array
+# Put the the value of each column an array
+INDEX=0
+while [ ${INDEX} -lt ${CONDITIONS_NUM} ]
+do 
+  COLS+=("$(echo "${CONDITIONS[@]}" | cut -d "," -f $[${INDEX}+1] | cut -d "=" -f 1  | sed 's/^ *//g')")
+  VALUES+=("$(echo "${CONDITIONS[@]}" | cut -d "," -f $[${INDEX}+1] | cut -d "=" -f 2)")
+  let INDEX=${INDEX}+1
+done
 
-#Put the the value of each column an array
-VALUES=($(echo "${CONDITIONS[@]#*=}"))
-
-#Array containing number of field for each column to be able to access it in the data file
+# Array containing number of field for each column to be able to access it in the data file
 declare -a FIELDS
 # ------------------------------------------------------------------------------------------------------
 #Check that inserted fields exist in the table metadata
 INDEX=0
 while [ ${INDEX} -lt ${CONDITIONS_NUM} ]
 do
-  if ! cut -d ":" -f 1 $HOME/octopusdb/${DIR}/metadata/${1}.md | grep -x ${COLS[${INDEX}]} > /dev/null
+  if ! cut -d ":" -f 1 $HOME/octopusdb/${DIR}/metadata/${1}.md | grep -x "${COLS[${INDEX}]}" > /dev/null
   then
     echo "ERROR: Unknown column '"${COLS[${INDEX}]}"'."
     exit 1
@@ -76,7 +80,7 @@ done
 INDEX=0
 while [ ${INDEX} -lt ${CONDITIONS_NUM} ]
 do
-  FIELDS+=($(cut -d ":" -f 1 $HOME/octopusdb/${DIR}/metadata/${1}.md | grep -n -x ${COLS[${INDEX}]} | cut -d ":" -f 1))
+  FIELDS+=($(cut -d ":" -f 1 $HOME/octopusdb/${DIR}/metadata/${1}.md | grep -n -x "${COLS[${INDEX}]}" | cut -d ":" -f 1))
   let INDEX="${INDEX}"+1
 done
 # ------------------------------------------------------------------------------------------------------
@@ -85,7 +89,7 @@ declare -a RECORDS_LINES
 INDEX=0
 while [ ${INDEX} -lt ${CONDITIONS_NUM} ]
 do
-  RECORDS_LINES+=($(cut -d ":" -f ${FIELDS[${INDEX}]} $HOME/octopusdb/${DIR}/data/${1}.d | grep -n -x ${VALUES[${INDEX}]} | cut -d ":" -f 1))
+  RECORDS_LINES+=($(cut -d ":" -f ${FIELDS[${INDEX}]} $HOME/octopusdb/${DIR}/data/${1}.d | grep -n -x "${VALUES[${INDEX}]}" | cut -d ":" -f 1))
   let INDEX=${INDEX}+1
 done
 # ------------------------------------------------------------------------------------------------------
