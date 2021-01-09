@@ -26,8 +26,8 @@ To start using the database engine:
 
 # Features
 - Supports Int and text datatypes
-   -- INT : -2147483648 to 2147483647
-   --TEXT : Any kind of text data including spaces.
+   - INT : -2147483648 to 2147483647
+   - TEXT : Any kind of text data including spaces.
 - Supports primary key constrain.
 - Validates databases and tables names as they can't contain any characters or spaces and can't contain only numbers. 
 - Reading, Deleting and Updating records by applying multiple conditions.
