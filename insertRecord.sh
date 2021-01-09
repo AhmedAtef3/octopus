@@ -9,7 +9,6 @@
 #    or primary key is repeated or a datatype is invalid for the column.
 # ------------------------------------------------------------------------------------------------------
 set -f
-
 args="$@"
 
 # Source Script containing test functions
@@ -56,9 +55,23 @@ do
    value=`sed -n "${INDEX}p" $HOME/octopusdb/${DIR}/metadata/_record.d`
    if ! intCheck ${value}
    then  
-    echo "ERROR: Incorrect integer value: '"${value}"' for column '"${DIR}.${1}.$(sed -n "${INDEX}p" $HOME/octopusdb/${DIR}/metadata/${1}.md | cut -d ":" -f 1)"'."
-    exit 1
-  fi
+   echo "ERROR: Incorrect integer value: '"${value}"' for column '"${DIR}.${1}.$(sed -n "${INDEX}p" $HOME/octopusdb/${DIR}/metadata/${1}.md | cut -d ":" -f 1)"'."
+   exit 1
+   fi
+   #If datatype of column is INT and Updated value in out of INT range raise an error
+   if [ ${#value} -gt 11 ]
+     then
+     echo "ERROR: Out of range value for column '"${DIR}.${1}.$(sed -n "${INDEX}p" $HOME/octopusdb/${DIR}/metadata/${1}.md | cut -d ":" -f 1)"' "
+     exit 1
+   fi
+   
+   #If datatype of column is INT and Updated value in out of INT range raise an error
+   if [ ${value} -lt -2147483648 ] || [ ${value} -gt 2147483647 ]
+   then
+   echo "ERROR: Out of range value for column '"${DIR}.${1}.$(sed -n "${INDEX}p" $HOME/octopusdb/${DIR}/metadata/${1}.md|cut -d ":" -f 1)"'"
+    	exit 1
+   fi
+   
 done
 
 # ------------------------------------------------------------------------------------------------------

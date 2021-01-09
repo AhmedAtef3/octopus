@@ -62,7 +62,7 @@ fi
 # @returncode 1 If doesn't exist.
 
 function tableExist () {
-if grep -x ${1} $HOME/octopusdb/${2}/tables.d > /dev/null 
+if grep -x ${1} $HOME/octopusdb/${2}/tables.d > /dev/null  2> /dev/null
 then
 	return 0
 else	
@@ -124,7 +124,7 @@ fi
 
 #Function to check if the passed argument is integer or not
 function intCheck () {
-if [[ $1 =~ ^[0-9]+$ ]]
+if [[ $1 =~ ^-?[0-9]+$ ]]
 then
   return 0
 else
